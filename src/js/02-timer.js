@@ -1,15 +1,23 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 //
+const parent = document.querySelector('.timer');
 const refs = {
-  inpurEl: document.querySelector('#datetime-picker'),
-  startEl: document.querySelector('button[data-start]'),
+  // parent: document.querySelector('.timer'),
+
+  inpurEl: parent.querySelector('#datetime-picker'),
+  startEl: parent.querySelector('button[data-start]'),
+  spanDay: parent.querySelector('.value[data-days]'),
+  spanHours: parent.querySelector('.value[data-hours]'),
+  spanMinutes: parent.querySelector('.value[data-minutes]'),
+  spanSeconds: parent.querySelector('.value[data-seconds]'),
 };
+console.log(refs.span);
 
 //
 //
 // refs.inpurEl.addEventListener('input');
-refs.startEl.addEventListener('click', onStartClick);
+// refs.startEl.addEventListener('click', onStartClick);
 //
 //
 
@@ -29,7 +37,7 @@ const options = {
     selectedDate(userTime);
   },
 };
-flatpickr(refs.inpurEl, options);
+flatpickr('#datetime-picker', options);
 //
 //
 
@@ -38,12 +46,18 @@ function selectedDate(userTime) {
     const currentTime = userTime - Date.now();
     // console.log(currentTime);
 
-    const { days, hours, minutes, seconds } = convertMs(currentTime);
+    const time = convertMs(currentTime);
 
-    console.log(`${days}:${hours}:${minutes}:${seconds}`);
+    updateTime(time);
   }, 1000);
 }
 
+function updateTime({ days, hours, minutes, seconds }) {
+  refs.spanDay.innerHTML = days;
+  refs.spanHours.innerHTML = hours;
+  refs.spanMinutes.innerHTML = minutes;
+  refs.spanSeconds.innerHTML = seconds;
+}
 function onStartClick() {
   console.log('okkk');
 }

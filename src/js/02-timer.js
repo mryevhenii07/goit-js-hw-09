@@ -5,6 +5,7 @@ const refs = {
   inpurEl: document.querySelector('#datetime-picker'),
   startEl: document.querySelector('button[data-start]'),
 };
+
 //
 //
 // refs.inpurEl.addEventListener('input');
@@ -33,7 +34,7 @@ flatpickr(refs.inpurEl, options);
 //
 
 function selectedDate(userTime) {
-  const intervalId = setInterval(() => {
+  let intervalId = setInterval(() => {
     const currentTime = userTime - Date.now();
     // console.log(currentTime);
 

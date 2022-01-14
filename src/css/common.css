@@ -31,3 +31,13 @@ img {
   border: none;
   background-color: rgb(162, 201, 201);
 }
+.js-list {
+  width: 100px;
+  height: 30px;
+  background-color: rgb(189, 75, 75);
+  list-style: none;
+
+  top: 150px;
+  right: 50px;
+  border-radius: 8px;
+}
